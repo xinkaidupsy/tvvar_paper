@@ -3,7 +3,7 @@
 library(devtools)
 # install_github("jmbh/mgm")
 
-figDir <- "" # Specify directory in which figures should be saved
+figDir <- getwd()
 library(qgraph)
 
 # ----------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ head(time_data)
 # ----------------------- 2) Estimation --------------------------------------------
 # ----------------------------------------------------------------------------------
 
-# Bandwidth selection (in Appendix A)
+# Bandwidth selection (in Appendix C)
 bwSeq <- seq(0.01, 1, length = 10)
 
 set.seed(1)
@@ -43,7 +43,7 @@ bw_object <- bwSelect(data = mood_data,
                       beepvar = time_data$beepno,
                       dayvar = time_data$dayno,
                       pbar = TRUE)
-
+?bwSelect
 bandwidth <- bwSeq[which.min(bw_object$meanError)]
 bandwidth
 
